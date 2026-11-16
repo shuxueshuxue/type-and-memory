@@ -1,0 +1,9 @@
+{
+  "id": "type-and-memory",
+  "name": "type and memory",
+  "version": "0.1.0",
+  "minAppVersion": "1.5.0",
+  "description": "Write a note on a quiet page while voices leave notes in the margin.",
+  "author": "shuxueshuxue",
+  "isDesktopOnly": false
+}

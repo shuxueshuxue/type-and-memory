@@ -1,0 +1,24 @@
+html, body, #page { height: 100%; margin: 0; }
+body { background: #fbfaf6; }
+@media (prefers-color-scheme: dark) { body { background: #1a1917; } }
+
+.gear {
+  position: fixed; top: 14px; right: 16px; width: 30px; height: 30px; border: 0; border-radius: 50%;
+  background: none; color: #9a968c; font: 18px/1 system-ui; cursor: pointer; opacity: .55; transition: opacity .2s;
+}
+.gear:hover, .gear[aria-expanded="true"] { opacity: 1; }
+.gear.unset::after { content: ""; position: absolute; top: 5px; right: 5px; width: 6px; height: 6px; border-radius: 50%; background: #d2693c; }
+.model {
+  position: fixed; top: 50px; right: 16px; width: 300px; padding: 16px; border-radius: 12px; display: grid; gap: 10px;
+  background: #fff; color: #2a2926; box-shadow: 0 10px 40px rgb(0 0 0 / .14), 0 0 0 1px rgb(0 0 0 / .06);
+  font: 13px/1.5 -apple-system, "Segoe UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+}
+.model[hidden] { display: none; }
+.model label { display: grid; gap: 3px; color: #77736a; }
+.model input { font: inherit; padding: 6px 8px; border: 1px solid #e3dfd5; border-radius: 6px; color: inherit; background: none; outline: none; }
+.model input:focus { border-color: #9a968c; }
+.model p { margin: 0; color: #9a968c; font-size: 12px; }
+@media (prefers-color-scheme: dark) {
+  .model { background: #262521; color: #e4e0d6; box-shadow: 0 10px 40px rgb(0 0 0 / .5), 0 0 0 1px rgb(255 255 255 / .07); }
+  .model input { border-color: #3a3833; }
+}

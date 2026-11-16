@@ -1,0 +1,11 @@
+/* The paper takes the vault's theme. */
+.view-content .tm-root {
+  --tm-paper: var(--background-primary);
+  --tm-ink: var(--text-normal);
+  --tm-faint: var(--text-faint);
+  --tm-rule: var(--background-modifier-border);
+  --tm-serif: var(--font-text);
+  --tm-sans: var(--font-interface);
+  --tm-size: var(--font-text-size);
+}
+.workspace-leaf-content[data-type="type-and-memory"] .view-content { padding: 0; overflow: hidden; }

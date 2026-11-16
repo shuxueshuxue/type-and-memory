@@ -1,0 +1,26 @@
+{
+  "name": "type-and-memory",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A writing page where agents leave notes in the margin. Embeddable, framework-free.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "dev": "node build.mjs --serve",
+    "build": "node build.mjs",
+    "serve": "node server/server.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "esbuild": "^0.25.0",
+    "obsidian": "^1.14.4",
+    "playwright-core": "^1.65.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.0"
+  }
+}
