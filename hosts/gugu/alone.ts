@@ -1,5 +1,5 @@
-// A page written before any agent is picked. It lives in the App's own data on this device, in the shape of a
-// chat's page.tam.json, until an agent is picked; then its text is carried into the page of the private chat with
+// A page kept only on this device. It lives in the App's own data (one file per page under pages/), in the shape of a
+// chat's page.tam.json, until an agent is picked; then its text is carried into a new page of the private chat with
 // that agent, and from there on that chat file is the only copy.
 
 import type { Mark, Store } from '../../src/core/types'
@@ -22,7 +22,8 @@ export function dataStore(data: Data, path: string): Store & { retire(): Promise
     },
     save(doc) {
       if (retired) return writing
-      const content = JSON.stringify({ v: 1, text: doc.text, marks: Object.fromEntries(doc.marks.map((m) => [m.id, m])) })
+      // `at`: when it last changed, for the list's order (a chat file has its own updatedAt).
+      const content = JSON.stringify({ v: 1, text: doc.text, marks: Object.fromEntries(doc.marks.map((m) => [m.id, m])), at: new Date().toISOString() })
       writing = writing.then(() => data.write(path, content))
       return writing
     },
