@@ -54,12 +54,12 @@ describe('carrying the page written on this device into a chat', () => {
 })
 
 describe('the page on this device', () => {
-  it('keeps page.tam.json’s shape, and saves nothing once retired', async () => {
+  it('keeps page.tam.json’s shape plus when it changed, and saves nothing once retired', async () => {
     const files = new Map<string, string>()
     const store = dataStore({ read: async (p) => files.get(p) ?? null, write: async (p, c) => void files.set(p, c) }, 'page.tam.json')
     expect(await store.load()).toBeNull()
     await store.save({ text: '你好', marks: [] })
-    expect(JSON.parse(files.get('page.tam.json')!)).toEqual({ v: 1, text: '你好', marks: {} })
+    expect(JSON.parse(files.get('page.tam.json')!)).toEqual({ v: 1, text: '你好', marks: {}, at: expect.any(String) })
     expect(await store.load()).toEqual({ text: '你好', marks: [] })
     await store.retire()
     await store.save({ text: '迟到的保存', marks: [] })

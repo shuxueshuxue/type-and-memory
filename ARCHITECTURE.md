@@ -53,7 +53,7 @@ type Ask = { kind: 'glance'; focus? } | { kind: 'reply'; mark, text }
 |---|---|---|---|
 | 独立网页（纯前端） | localStorage | 浏览器直连任一 OpenAI 兼容接口（自带 key），或者不接 | 跑通 |
 | 独立网页（带后端） | `PUT /api/doc` 到一个文件 | 同一个 LLM agent，地址指向自己的后端 | 跑通。后端约 70 行 Node：静态文件 + 存文件 + 替你拿着 key 转发 |
-| 咕咕 App | 群/私聊里的 `page.tam.json`，实时。批注是文件里的键，正文走咕咕的协作文本绑定 | **这个聊天里的 agent**：`ask` 是给它的一条悄悄话，它调 `read`/`annotate`/`reply` 三个工具，工具把批注写进文件，纸从 `watch` 看到 | 私聊、群都跑通（真实桌面构建 + 真实 agent） |
+| 咕咕 App | 群/私聊里的 `*.tam.json`（一个聊天可以有多页；所有页一个列表，一次 `files.search` 取回），实时。批注是文件里的键，正文走咕咕的协作文本绑定 | **这个聊天里的 agent**：`ask` 是给它的一条悄悄话，它调 `read`/`annotate`/`reply` 三个工具，工具把批注写进文件，纸从 `watch` 看到 | 私聊、群都跑通（真实桌面构建 + 真实 agent） |
 | Obsidian 插件 | 库里的那篇 `.md`，批注放在文末一个 `%% 注释 %%` 块里 | LLM agent（设置里填接口） | 在真 Obsidian 1.15.1 里跑通 |
 | DeepSeek Harness 插件 | 会话工作目录里的 `page.tam.md`（同 Obsidian 的格式），侧栏通过宿主半注册的一条路由读写 | **这个会话的 agent**：`Desk` 注册成 `page_read` / `page_annotate` / `page_reply` 三个工具，`ask` 是往会话里发一条消息 | 在真 dsh 0.2.2-rc.2 里跑通。第三方插件不能新增转发事件，侧栏每 1.5 秒问一次文件有没有变 |
 
